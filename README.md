@@ -1,7 +1,5 @@
 # RogueDrifterZ
 
-[![sampctl](https://shields.southcla.ws/badge/sampctl-RogueDrifterZ-2f2f2f.svg?style=for-the-badge)](https://github.com/RogueDrifter/RogueDrifterZ)
-
 ## Installation
 
 Simply install to your project:

@@ -66,3 +66,10 @@ You will find in the Main file two definitions if you run 0.3.7DL then comment o
 
 # Separated folders
 I understand that the constant part alongside my anti-cheat should've been dependencies as well but i was trying to do a few changes on my own when i faced issues thats why i just dropped them all in a folder where i thought they'd be constant as in me rarely editing them, but yeah. easier for you, easier for me.
+
+# Features
+
+
+To the part where i should state what this had but I can't be bothered, it's just a drift server, a drift counter, a few drift battle events, stats save along with levels and a few events like the team deathmatch and the monster knock-out, a job like the cops one where u can chase wanted people and put them in jail, it's got my anti cheat on it and you will find shops all over the map if you use the database i provided as i created a little SQL script that enables you to create shops you'll find the command inside its just /createshop and you choose it then it'll be there for good (Saved inside the database). There's also a house system which is /createhouse [name] where it will create a house and allow players to do /home or whatever to teleport to it, all of this is done in-game.
+I will upload the database with shops all over the map later, it has mapicons, npcs you can interact with (dialogs were never finished but you can finish them) and the interiors ofc.
+You will find a lot of showcases to my server on this youtube channel if you want: https://www.youtube.com/channel/UCoa...PrGAUJw/videos

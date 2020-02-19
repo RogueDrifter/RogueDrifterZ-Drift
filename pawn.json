@@ -1,0 +1,26 @@
+{
+	"user": "RogueDrifter",
+	"repo": "RogueDrifterZ",
+	"entry": "Main.pwn",
+	"output": "Main.amx",
+	"dependencies": [
+		"sampctl/samp-stdlib:0.3.7-R2-2-1",
+		"pawn-lang/YSI-Includes@5.x"
+	],
+	"builds": [
+		{
+			"version": "3.10.7",
+			"includes": ["legacy"]
+		  }
+	],
+	"runtime": {
+		"version": "0.3.7",
+		"mode": "y_testing",
+		"echo": "Loading configuration...",
+		"rcon_password": "123456789",
+		"port": 7777,
+		"hostname": "SA-MP Server",
+		"maxplayers": 50,
+		"language": "English"
+	}
+}

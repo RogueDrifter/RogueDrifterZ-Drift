@@ -63,3 +63,6 @@ This was ran and built using sampctl, you can take all the legacy and dependenci
 # Christmas-mod and 0.3.7DL
 
 You will find in the Main file two definitions if you run 0.3.7DL then comment out the enable R2 version (It will automatically include a few files like the maps and stuff for VC and LC and a few skin add-ons that i had) And the christmas part will give you a few commands and it will cover the whole map in snow alongside falling snow.
+
+# Separated folders
+I understand that the constant part alongside my anti-cheat should've been dependencies as well but i was trying to do a few changes on my own when i faced issues thats why i just dropped them all in a folder where i thought they'd be constant as in me rarely editing them, but yeah. easier for you, easier for me.

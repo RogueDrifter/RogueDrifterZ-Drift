@@ -59,3 +59,7 @@ This is my first SQL script and my second modular-way script so don't expect it 
 # Running
 You will find dependencies in the release section, you will also find a zip of the server you can use to run on your windows attached in the releases as well.
 This was ran and built using sampctl, you can take all the legacy and dependencies and drop them in an includes folder if you're using pawno or whatever.
+
+# Christmas-mod and 0.3.7DL
+
+You will find in the Main file two definitions if you run 0.3.7DL then comment out the enable R2 version (It will automatically include a few files like the maps and stuff for VC and LC and a few skin add-ons that i had) And the christmas part will give you a few commands and it will cover the whole map in snow alongside falling snow.

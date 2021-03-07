@@ -73,10 +73,6 @@
 
 #define _AC_SYSTEM_
 
-#if !defined AC_MESSAGE_COLOR
-	#define AC_MESSAGE_COLOR -1
-#endif
-
 #define SEVERITY_CASE_ONE 0 	//Warn then kick
 #define SEVERITY_CASE_TWO 1		//Kick
 #define SEVERITY_CASE_THREE 2	//Ban
@@ -115,7 +111,7 @@ public OnPlayerViolate(playerid, severity, violationCode, const violationName[])
 			else 
 			{
 				format(acString, sizeof acString, "Player %s was kicked after 3 warnings, reason: Code violation #%d", name, violationCode);
-				if(GetPlayerADMIN(playerid) < 7) Kick(playerid),
+				if(GetPlayerADMIN(playerid) < ADMIN_LEVEL_SEVEN) Kick(playerid),
 					SendRDZMessage(INVALID_PLAYER_ID, RDZ_OFFICIAL_COLOR, acString, MESSAGE_CASE_JANITOR);
 
 			}
@@ -123,7 +119,7 @@ public OnPlayerViolate(playerid, severity, violationCode, const violationName[])
 		case SEVERITY_CASE_TWO:
 		{
 			format(acString, sizeof acString, "Player %s was kicked, reason: Code violation #%d", name, violationCode);
-			if(GetPlayerADMIN(playerid) < 7) Kick(playerid),
+			if(GetPlayerADMIN(playerid) < ADMIN_LEVEL_SEVEN) Kick(playerid),
 				SendRDZMessage(INVALID_PLAYER_ID, RDZ_OFFICIAL_COLOR, acString, MESSAGE_CASE_JANITOR);
 		}
 		case SEVERITY_CASE_THREE:
@@ -142,110 +138,174 @@ public OnPlayerViolate(playerid, severity, violationCode, const violationName[])
 	return 1;
 }
 
-public OnPlayerFakeKill(playerid, spoofedid, spoofedreason, faketype)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_FAKEKILL, "Fake killing");
-	return 1;
-}
+#if !defined DISABLE_FAKEKILL
 
-public OnPlayerFakeConnect(playerid)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_FAKECONNECT, "Fake connect");
-	return 1;
-}
-
-public OnPlayerJetpackCheat(playerid)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_THREE, VIOLATION_CODE_JETPACK, "Jetpack cheats");
-	return 1;
-}
-
-public OnPlayerGodmode(playerid, gmtype)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_GODMODE, "Godmode cheats");
-	return 1;
-}
-
-public OnPlayerSpamChat(playerid)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_ONE, VIOLATION_CODE_CHATSPAM, "Chat spamming");
-	return 1;
-}
-
-public OnPlayerGunCheat(playerid, weaponid, ammo, hacktype)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_WEPHACKS, "Weapon cheats");
-	return 1;
-}
-
-public OnPlayerSpeedCheat(playerid, speedtype)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_SPEEDING, "Speed cheats");
-	return 1;
-}
-
-public OnPlayerBreakAir(playerid, breaktype)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_AIRBRAKE, "Airbrake");
-	return 1;
-}
-
-public OnPlayerSpamCars(playerid, number)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_THREE, VIOLATION_CODE_CARSPAM, "Car spam");
-	return 1;
-}
-
-public OnPlayerCarTroll(playerid, vehicleid, trolledid, trolltype)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_CARTROLL, "Car troll");
-	return 1;
-}
-
-public OnPlayerCashCheat(playerid, oldcash, newcash, amount)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_MONEYHACK, "Cash cheats");
-	return 1;
-}
-
-public OnPlayerCarSwing(playerid, vehicleid)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_CARSWING, "Car swing");
-	return 1;
-}
-
-public OnPlayerParticleSpam(playerid, vehicleid)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_THREE, VIOLATION_CODE_PARTICLESPAM, "Particle spamming");
-	return 1;
-}
-
-public OnVehicleModEx(playerid, vehicleid, componentid, illegal)
-{
-	if(illegal)
+	public OnPlayerFakeKill(playerid, spoofedid, spoofedreason, faketype)
 	{
-		OnPlayerViolate(playerid, SEVERITY_CASE_THREE, VIOLATION_CODE_INVALIDMODS, "Invalid mods");
+		OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_FAKEKILL, "Fake killing");
+		return 1;
 	}
-	return 1;
-}
 
-public OnPlayerSlide(playerid, weaponid, speed)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_ONE, VIOLATION_CODE_SLIDEBUG, "Slide bugging");
-	return 1;
-}
+#endif
 
-public OnPlayerLagout(playerid, lagtype, ping)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_ONE, VIOLATION_CODE_LAGOUT, "Huge lag");
-	return 1;
-}
+#if !defined DISABLE_FAKECONNECT
 
-public OnPlayerBugAttempt(playerid, bugcode)
-{
-	OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_BUGATTEMPT, "Bug cheats");
-	return 1;
-}
+	public OnPlayerFakeConnect(playerid)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_FAKECONNECT, "Fake connect");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_JETPACK
+
+	public OnPlayerJetpackCheat(playerid)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_THREE, VIOLATION_CODE_JETPACK, "Jetpack cheats");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_GODMODE
+
+	public OnPlayerGodmode(playerid, gmtype)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_GODMODE, "Godmode cheats");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_CHATSPAM
+
+	public OnPlayerSpamChat(playerid)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_ONE, VIOLATION_CODE_CHATSPAM, "Chat spamming");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_GUNCHEATS
+
+	public OnPlayerGunCheat(playerid, weaponid, ammo, hacktype)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_WEPHACKS, "Weapon cheats");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_SPEEDCHEATS
+
+	public OnPlayerSpeedCheat(playerid, speedtype)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_SPEEDING, "Speed cheats");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_AIRBREAKTELEPORT
+
+	public OnPlayerBreakAir(playerid, breaktype)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_AIRBRAKE, "Airbrake");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_CARSPAM
+
+	public OnPlayerSpamCars(playerid, number)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_THREE, VIOLATION_CODE_CARSPAM, "Car spam");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_CARTROLL
+
+	public OnPlayerCarTroll(playerid, vehicleid, trolledid, trolltype)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_CARTROLL, "Car troll");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_MONEYCHEATS
+
+	public OnPlayerCashCheat(playerid, oldcash, newcash, amount)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_MONEYHACK, "Cash cheats");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_VEHICLEABUSE
+
+	public OnPlayerCarSwing(playerid, vehicleid)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_CARSWING, "Car swing");
+		return 1;
+	}
+
+	public OnPlayerParticleSpam(playerid, vehicleid)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_THREE, VIOLATION_CODE_PARTICLESPAM, "Particle spamming");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_VEHICLEMODS
+
+	public OnVehicleModEx(playerid, vehicleid, componentid, illegal)
+	{
+		if(illegal)
+		{
+			OnPlayerViolate(playerid, SEVERITY_CASE_THREE, VIOLATION_CODE_INVALIDMODS, "Invalid mods");
+		}
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_SLIDEBUG
+
+	public OnPlayerSlide(playerid, weaponid, speed)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_ONE, VIOLATION_CODE_SLIDEBUG, "Slide bugging");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_LAGGERSDETECT
+
+	public OnPlayerLagout(playerid, lagtype, ping)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_ONE, VIOLATION_CODE_LAGOUT, "Huge lag");
+		return 1;
+	}
+
+#endif
+
+#if !defined DISABLE_BUGCHEATS
+
+	public OnPlayerBugAttempt(playerid, bugcode)
+	{
+		OnPlayerViolate(playerid, SEVERITY_CASE_TWO, VIOLATION_CODE_BUGATTEMPT, "Bug cheats");
+		return 1;
+	}
+
+#endif
 
 #if defined AC_OnPlayerDisconnect
 	forward AC_OnPlayerDisconnect(playerid, reason);

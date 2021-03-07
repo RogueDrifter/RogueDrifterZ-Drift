@@ -2394,13 +2394,13 @@ stock GetTCarCol1(playerid)
 stock GetTCarCol2(playerid)
     return RDZPlayer[playerid][CAR_SCOLOR];
     
-stock SendToAdminLogs(string[])
+stock SendToAdminLogs(const string[])
 {
     DCC_SendChannelMessage(Admin_Log, string);
     return 1;
 }
 
-stock SendToAdminsReports(string[])
+stock SendToAdminsReports(const string[])
 {
     DCC_SendChannelMessage(Admin_Chat, string);
     return 1;
@@ -3514,7 +3514,7 @@ stock UpdateTelecarColors(playerid, col1, col2)
 }
 //END: Action functions
 
-stock SendRDZMessage(playerid, color, message[], message_case, secondid = 0)
+stock SendRDZMessage(playerid, color, const message[], message_case, secondid = 0)
 {
     #pragma unused color
     new 

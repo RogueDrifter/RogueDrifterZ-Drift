@@ -480,7 +480,7 @@ hook OnPlayerStateChange(playerid, newstate, oldstate)
 	return 1;
 }
 
-stock SendPDReport(playerid, report_id, report_name[])
+stock SendPDReport(playerid, report_id, const report_name[])
 {
 	new string[STRING_SIZE_LARGE*2];
 	format(string, sizeof string, "Heads up! Player %s has been reported for %s code %d, go get 'em!", Player_TempName[playerid], report_name, report_id);

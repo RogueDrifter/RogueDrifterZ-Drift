@@ -587,7 +587,7 @@ static VehicleNames[212][] = {
 {"Utility Trailer"}
 };
 
-static GetVehicleModelIDFromName(vname[])
+static GetVehicleModelIDFromName(const vname[])
 {
 	for(new i = 0; i < 211; i++)
 	{
@@ -1405,7 +1405,7 @@ hook OnPlayerDisconnect(playerid, reason)
 stock IsPlayerRconAdmin(playerid)
 	return RDZ_RconAdmin{playerid};
 
-stock SendMessageToAdmins(message[])
+stock SendMessageToAdmins(const message[])
 {
 	foreach(new i: Player)
 	{

@@ -329,6 +329,7 @@ CMD:paycheck(playerid)
 	return 1;
 }
 
+#if defined CHRISTMAS_MOD
 CMD:christmas(playerid)
 {
 	SendRDZMessage(playerid, RDZ_OFFICIAL_COLOR, "Christmas CMDS:", MESSAGE_CASE_SERVER);
@@ -336,6 +337,7 @@ CMD:christmas(playerid)
 	return 1;
 }
 alias:christmas("xmas", "xmashelp", "christmashelp", "santa", "santaclaus");
+#endif
 
 CMD:help(playerid)
 {

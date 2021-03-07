@@ -10631,7 +10631,7 @@ hook OnGameModeInit()
     InstallCopLights(COP_VEHICLE[1]);
     InstallCopLights(COP_VEHICLE[2]);
     InstallCopLights(COP_VEHICLE[3]);
-
+    
     for(new x; x < MAX_VEHICLES; x++)
     {
         if(!IsValidVehicle(x)) continue;

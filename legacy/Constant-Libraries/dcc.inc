@@ -13,11 +13,11 @@ new DCC_Channel:BotChannel;
 			
 //CallBacks
 forward OnDCCommandPerformed(args[], success);		
-forward SendDC(channel[], const fmat[], va_args<>);
+forward SendDC(const channel[], const fmat[], va_args<>);
 
 //Functions
 
-public SendDC(channel[], const fmat[], va_args<>)
+public SendDC(const channel[], const fmat[], va_args<>)
 {
     new
         str[145];

@@ -753,7 +753,7 @@ stock vSync_AddStaticVehicleEx(modelid, Float:x, Float:y, Float:z, Float:rotatio
 	#define _ALS_AddStaticVehicleEx
 #endif
 #define AddStaticVehicleEx vSync_AddStaticVehicleEx
-stock vSync_SetVehicleNumberPlate(vehicleid, numberplate[])
+stock vSync_SetVehicleNumberPlate(vehicleid, const numberplate[])
 {
 	if(1 <= vehicleid <= MAX_VEHICLES)
 	{

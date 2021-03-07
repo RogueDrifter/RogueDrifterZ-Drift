@@ -390,7 +390,7 @@ static Prev_DestroyTextDraws() {
 	}
 }
 
-static Prev_CreatePlayerTextDraws(playerid, header[], button1[], button2[], button3[], totalItems) {
+static Prev_CreatePlayerTextDraws(playerid, const header[], const button1[], const button2[], const button3[], totalItems) {
     /*
 	* HEADER
 	*/
@@ -1160,7 +1160,7 @@ public OnPlayerClickTextDraw(playerid, Text:clickedid) {
     forward PDialog_OnPlayerClickTextDraw(playerid, Text:clickedid);
 #endif
 
-stock Prev_ShowPlayerDialog(playerid, dialogid, style, caption[], info[], button1[], button2[]) {
+stock Prev_ShowPlayerDialog(playerid, dialogid, style, const caption[], const info[], const button1[], const button2[]) {
 	if (playerid < 0 || playerid >= MAX_PLAYERS) {
 	    return 0;
 	}

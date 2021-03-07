@@ -284,7 +284,7 @@ public OnPlayerCommandReceived(playerid, cmd[], params[], flags)
 {
     if(!IsPlayerLoggedIn(playerid)) return 0;
 
-    if( (IsPlayerMuted(playerid) || IsPlayerInJail(playerid) || IsPlayerInTDM(playerid)) && !(GetPlayerADMIN(playerid) != 7) )
+    if( (IsPlayerMuted(playerid) || IsPlayerInJail(playerid) || IsPlayerInTDM(playerid)) && !(GetPlayerADMIN(playerid) != ADMIN_LEVEL_SEVEN) )
     {
         return 0;
     }

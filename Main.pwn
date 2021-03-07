@@ -282,7 +282,9 @@ public OnPlayerCommandPerformed(playerid, cmd[], params[], result, flags)
 
 public OnPlayerCommandReceived(playerid, cmd[], params[], flags)
 {
-    if( (IsPlayerMuted(playerid) || !IsPlayerLoggedIn(playerid) || IsPlayerInJail(playerid) || IsPlayerInTDM(playerid)) && !(GetPlayerADMIN(playerid) != 7) )
+    if(!IsPlayerLoggedIn(playerid)) return 0;
+
+    if( (IsPlayerMuted(playerid) || IsPlayerInJail(playerid) || IsPlayerInTDM(playerid)) && !(GetPlayerADMIN(playerid) != 7) )
     {
         return 0;
     }
